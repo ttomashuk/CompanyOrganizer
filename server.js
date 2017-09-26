@@ -1,3 +1,4 @@
+var cool = require('cool-ascii-faces');
 const express        = require('express');
 const MongoClient    = require('mongodb').MongoClient;
 const bodyParser     = require('body-parser');
@@ -24,6 +25,10 @@ MongoClient.connect(db.url, (err, database) => {
   if (err) {  console.log("FAILED"); return console.log(err);}
   else console.log("MongoDb connected");
   require('./server/routes')(app, database);
+
+  app.get('/cool', function(request, response) {
+    response.send(cool());
+  });
 
   app.get('*', (req, res) => {
     console.log("routes *");
