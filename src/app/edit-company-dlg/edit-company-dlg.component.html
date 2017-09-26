@@ -1,0 +1,21 @@
+<h1 md-dialog-title *ngIf="data.dialogType == 'CREATE'">Create form</h1>
+<h1 md-dialog-title *ngIf="data.dialogType == 'EDIT'">Edit form</h1>
+<div md-dialog-content class="form-group">
+  <div class="row form-group">
+    <label class="col-form-label col-xs-3">Name:</label>
+    <div class="col-xs-9">
+      <input type="text" [(ngModel)]="data.company.name" class="form-control" placeholder="Enter name">
+    </div>
+  </div>
+  <div class="row form-group">
+    <label class="col-form-label col-xs-3">Earnings:</label>
+    <div class="col-xs-9">
+      <input type="number" [(ngModel)]="data.company.earnings" class="form-control" placeholder="Enter earnings">
+    </div>
+  </div>
+</div>
+<div md-dialog-actions class="pull-right">
+  <button class="btn btn-success" *ngIf="data.dialogType == 'CREATE'" (click)="onCreateClick(data)">Create</button>
+  <button class="btn btn-success" *ngIf="data.dialogType == 'EDIT'" (click)="onUpdateClick(data)">Save</button>
+  <button class="btn btn-danger" (click)="onNoClick()">Cancel</button>
+</div>

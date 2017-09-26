@@ -1,0 +1,39 @@
+<div class="company-view col-xs-12 panel" *ngIf="isShowHeader==0">
+  <div  class="panel-body header">
+     <div class="name pull-left" >
+       Company name
+     </div>
+     <div class="info-container pull-right">
+       <div class="col-xs-4">Earings</div>
+       <div class="col-xs-6">Total earings</div>
+     </div>
+  </div>
+</div>
+
+
+<div class="company-view panel col-xs-12">
+
+  <div class="panel-body ">
+     <div class="name pull-left" >
+       {{company.name}}
+     </div>
+     <div class="info-container pull-right">
+       <div class="col-xs-4">{{company.earnings}}</div>
+       <div class="col-xs-4">
+         <span *ngIf="company.children.length > 0">
+         {{totalEarnings(company)}}
+       </span>
+       </div>
+       <div class="btn-group col-xs-4">
+         <button type="button" class="btn btn-default btn-xs glyphicon glyphicon-plus" (click)="onCreate()"></button>
+         <button type="button" class="btn btn-default btn-xs glyphicon glyphicon-edit" (click)="onUpdate()"></button>
+         <button type="button" class="btn btn-default btn-xs glyphicon glyphicon-trash" (click)="onDelete()"></button>
+       </div>
+     </div>
+  </div>
+
+  <div class="children-container" *ngIf="company.children.length > 0">
+    <company-view *ngFor="let company of company.children" [company]="company"></company-view>
+  </div>
+
+</div>

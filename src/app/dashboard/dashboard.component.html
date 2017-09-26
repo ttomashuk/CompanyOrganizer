@@ -1,0 +1,9 @@
+<div class="col-xs-12 col-md-11 col-lg-10 col-xl-9 dashboard-container">
+	<div class="">
+		<button type="button" class="btn btn-success btn-xs" (click)="onCreate()">Create new</button>
+	</div>
+	<company-view *ngFor="let company of companiesList; let isShow = index"
+		[company]="company"
+		[isShowHeader]="isShow">
+	</company-view>
+</div>
