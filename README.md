@@ -10,4 +10,4 @@ MongoDb with companies collection.
 
 Run `npm install` for install project
 
-Run `npm run build` for a dev server. Navigate to `http://localhost:8000/`.
+Run `npm run build` for a dev server. Navigate to `http://localhost:5000/`.
