@@ -7,8 +7,8 @@ const http           = require('http');
 const db             = require('./config/db');
 const company_routes = require('./server/routes/company_routes');
 const app            = express();
-const port = 5000;
 
+app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,5 +32,5 @@ MongoClient.connect(db.url, (err, database) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
   });
   const server = http.createServer(app);
-  server.listen(port, () => console.log(`Server running on localhost:${port}`));
+  server.listen(app.get('port'), () => console.log(`Server running on localhost:${app.get('port')}`));
 })
