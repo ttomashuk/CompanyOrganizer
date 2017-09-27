@@ -11,8 +11,9 @@ const port = 5000;
 
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
+//// localhost use only
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -26,13 +27,9 @@ MongoClient.connect(db.url, (err, database) => {
   else console.log("MongoDb connected");
   require('./server/routes')(app, database);
 
-  // app.get('/cool', function(request, response) {
-  //   response.send(cool());
-  // });
-
   app.get('*', (req, res) => {
     console.log("routes *");
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
   const server = http.createServer(app);
   server.listen(port, () => console.log(`Server running on localhost:${port}`));

@@ -4,13 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "startF": "ng serve",
-    "build": "ng build && node server.js",
+    "start": "node index.js",
+    "startng": "ng serve",
+    "build": "ng build && node index.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js"
   },
   "private": true,
   "dependencies": {
