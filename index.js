@@ -11,7 +11,7 @@ const port = 5000;
 
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //// localhost use only
 // app.use(function(req, res, next) {
@@ -29,7 +29,7 @@ MongoClient.connect(db.url, (err, database) => {
 
   app.get('*', (req, res) => {
     console.log("routes *");
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
   });
   const server = http.createServer(app);
   server.listen(port, () => console.log(`Server running on localhost:${port}`));
