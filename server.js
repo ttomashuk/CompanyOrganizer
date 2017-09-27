@@ -26,13 +26,13 @@ MongoClient.connect(db.url, (err, database) => {
   else console.log("MongoDb connected");
   require('./server/routes')(app, database);
 
-  app.get('/cool', function(request, response) {
-    response.send(cool());
-  });
+  // app.get('/cool', function(request, response) {
+  //   response.send(cool());
+  // });
 
   app.get('*', (req, res) => {
     console.log("routes *");
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
   });
   const server = http.createServer(app);
   server.listen(port, () => console.log(`Server running on localhost:${port}`));
