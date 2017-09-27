@@ -7,18 +7,18 @@ const http           = require('http');
 const db             = require('./config/db');
 const company_routes = require('./server/routes/company_routes');
 const app            = express();
-const port = 8000;
+const port = 5000;
 
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+//   next();
+// });
 
 MongoClient.connect(db.url, (err, database) => {
 
